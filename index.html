@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-<link rel="shortcut icon" href="/favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="DJ Movies Kenya" />
-<link rel="manifest" href="/favicon/site.webmanifest" />
-<title>DJ Movies Kenya - Kenyan DJ Movies, Series and Collections</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="DJ Movies Kenya" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <title>DJ Movies Kenya - Kenyan DJ Movies, Series and Collections</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -32,7 +32,7 @@
             },
         }
     </script>
-<style type="text/tailwindcss">
+    <style type="text/tailwindcss">
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -49,207 +49,199 @@
 </head>
 <body class="bg-background-dark text-white transition-colors duration-300">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<div id="mobile-menu" class="fixed inset-0 z-[100] bg-background-dark/95 backdrop-blur-lg translate-x-full transition-transform duration-300 md:hidden">
-    <div class="flex flex-col h-full p-6">
-        <div class="flex justify-end">
-            <button id="close-menu" class="text-white p-2">
-                <span class="material-symbols-outlined text-3xl">close</span>
-            </button>
+    <div class="layout-container flex h-full grow flex-col">
+        <div id="mobile-menu" class="fixed inset-0 z-[100] bg-background-dark/95 backdrop-blur-lg translate-x-full transition-transform duration-300 md:hidden">
+            <div class="flex flex-col h-full p-6">
+                <div class="flex justify-end">
+                    <button id="close-menu" class="text-white p-2">
+                        <span class="material-symbols-outlined text-3xl">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col items-center gap-8 mt-10">
+                    <a class="text-2xl font-bold text-white hover:text-primary" href="#features">Features</a>
+                    <a class="text-2xl font-bold text-white hover:text-primary" href="#platforms">Platforms</a>
+                </div>
+            </div>
         </div>
-        <div class="flex flex-col items-center gap-8 mt-10">
-            <a class="text-2xl font-bold text-white hover:text-primary" href="#features">Features</a>
-            <a class="text-2xl font-bold text-white hover:text-primary" href="#platforms">Platforms</a>
-            <!-- <button class="w-full max-w-[280px] rounded-xl h-14 bg-primary text-white font-bold shadow-lg mt-4">
-                Continue with Web Version
-            </button> -->
-        </div>
-    </div>
-</div>
-<header class="sticky top-0 z-50 w-full border-b border-solid border-border-dark bg-background-dark/80 backdrop-blur-md px-6 md:px-20 lg:px-40 py-3">
-<div class="flex items-center justify-between whitespace-nowrap max-w-[1200px] mx-auto">
-<div class="flex items-center gap-3 text-white">
-<div class="size-8 flex items-center justify-center bg-gradient-to-tr from-primary to-secondary rounded-lg">
-<span class="material-symbols-outlined text-white text-xl">play_circle</span>
-</div>
-<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">DJ Movies <span class="text-primary">Kenya</span></h2>
-</div>
-<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
-<div class="flex items-center gap-9">
-<a class="text-white/80 hover:text-primary text-sm font-medium transition-colors" href="#features">Features</a>
-<a class="text-white/80 hover:text-primary text-sm font-medium transition-colors" href="#platforms">Platforms</a>
-</div>
-<!-- <div class="flex items-center gap-4">
-<button class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold hover:brightness-110 transition-all border border-primary/20 shadow-lg shadow-primary/10">
-<span>Continue with Web Version</span>
-</button>
-</div> -->
-</div>
-<div class="md:hidden text-white">
-    <button id="menu-btn" class="md:hidden text-white p-2 flex items-center">
-        <span class="material-symbols-outlined text-3xl">menu</span>
-    </button>
-</div>
-</div>
-</header>
-<main class="flex-1">
-<section class="px-4 md:px-20 lg:px-40 flex justify-center py-5 md:py-10">
-<div class="layout-content-container flex flex-col max-w-[1100px] flex-1">
-<div class="@container">
-<div class="@[480px]:p-0">
-<div class="relative flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 rounded-2xl items-center justify-center p-8 overflow-hidden" style='background-image: url("./assets/images/hero-dark-cinematic.webp");'>
-<div class="absolute inset-0 cinematic-overlay"></div>
-<div class="relative flex flex-col gap-4 text-center max-w-[800px] z-10">
-<h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
-  The Ultimate <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-secondary">Kenyan DJ Movies</span> Experience
-</h1>
-<p class="text-white/80 text-base md:text-lg font-normal leading-relaxed max-w-[600px] mx-auto">
-  Stream, download, and enjoy the best Kenyan DJ movies, series and collections anywhere. High quality, low data, and easy M-Pesa payments.
-</p>
-</div>
-<div class="relative flex flex-wrap gap-4 justify-center z-10">
-    <a href="#platforms" class="flex min-w-[220px] cursor-pointer items-center justify-center rounded-xl h-12 md:h-14 px-10 bg-primary text-white text-base font-bold hover:scale-105 transition-transform shadow-xl shadow-primary/20">
-        <span class="material-symbols-outlined mr-2">download</span>
-        <span>Download App Now</span>
-    </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="px-4 md:px-20 lg:px-40 py-12" id="platforms">
-<div class="max-w-[1100px] mx-auto">
-<div class="flex flex-col md:flex-row md:items-end justify-between px-4 pb-8 border-b border-border-dark mb-8">
-<div>
-<h2 class="text-white text-3xl font-bold leading-tight tracking-tight">Available on your devices</h2>
-<p class="text-slate-400 mt-2">Get our official apps for the best Kenyan DJ movies, series and collections experience.</p>
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
-<a href="assets/downloads/dj_movies_kenya.apk" download class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark border border-border-dark hover:border-primary/50 transition-colors cursor-pointer group">
-    <div class="w-16 h-16 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-5xl">phone_android</span>
-    </div>
-    <div class="text-center">
-        <p class="text-white text-lg font-bold">Android APK</p>
-        <p class="text-slate-500 text-sm">Direct Download</p>
-    </div>
-</a>
-<a href="assets/downloads/dj_movies_kenya_windows.exe" download class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark border border-border-dark hover:border-primary/50 transition-colors cursor-pointer group">
-    <div class="w-16 h-16 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-5xl">desktop_windows</span>
-    </div>
-    <div class="text-center">
-        <p class="text-white text-lg font-bold">Windows</p>
-        <p class="text-slate-500 text-sm">Download Setup</p>
-    </div>
-</a>
-<div class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark/40 border border-border-dark/60 opacity-60 grayscale hover:grayscale-0 transition-all cursor-not-allowed group relative overflow-hidden">
-<div class="absolute top-2 right-2 bg-secondary/20 text-secondary text-[10px] font-bold px-2 py-1 rounded-full border border-secondary/30">
+        <header class="sticky top-0 z-50 w-full border-b border-solid border-border-dark bg-background-dark/80 backdrop-blur-md px-6 md:px-20 lg:px-40 py-3">
+            <div class="flex items-center justify-between whitespace-nowrap max-w-[1200px] mx-auto">
+                <div class="flex items-center gap-3 text-white">
+                    <div class="size-8 flex items-center justify-center bg-gradient-to-br from-primary to-secondary rounded-[35%]">
+                        <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">play_circle</span>
+                    </div>
+                    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">DJ Movies <span class="text-primary">Kenya</span></h2>
+                </div>
+                <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                    <div class="flex items-center gap-9">
+                        <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors" href="#features">Features</a>
+                        <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors" href="#platforms">Platforms</a>
+                    </div>
+                </div>
+                <div class="md:hidden text-white">
+                    <button id="menu-btn" class="md:hidden text-white p-2 flex items-center">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <section class="px-4 md:px-20 lg:px-40 flex justify-center py-5 md:py-10">
+                <div class="layout-content-container flex flex-col max-w-[1100px] flex-1">
+                    <div class="@container">
+                        <div class="@[480px]:p-0">
+                            <div class="relative flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 rounded-2xl items-center justify-center p-8 overflow-hidden" style='background-image: url("./assets/images/hero-dark-cinematic.webp");'>
+                                <div class="absolute inset-0 cinematic-overlay"></div>
+                                <div class="relative flex flex-col gap-4 text-center max-w-[800px] z-10">
+                                    <h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
+                                        The Ultimate <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-secondary">Kenyan DJ Movies</span> Experience
+                                    </h1>
+                                    <p class="text-white/80 text-base md:text-lg font-normal leading-relaxed max-w-[600px] mx-auto">
+                                        Stream, download, and enjoy the best Kenyan DJ movies, series and collections anywhere. High quality, low data, and easy M-Pesa payments.
+                                    </p>
+                                </div>
+                                <div class="relative flex flex-wrap gap-4 justify-center z-10">
+                                    <a href="#platforms" class="flex min-w-[220px] cursor-pointer items-center justify-center rounded-xl h-12 md:h-14 px-10 bg-primary text-white text-base font-bold hover:scale-105 transition-transform shadow-xl shadow-primary/20">
+                                        <span class="material-symbols-outlined mr-2">download</span>
+                                        <span>Download App Now</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-4 md:px-20 lg:px-40 py-12" id="platforms">
+                <div class="max-w-[1100px] mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between px-4 pb-8 border-b border-border-dark mb-8">
+                        <div>
+                            <h2 class="text-white text-3xl font-bold leading-tight tracking-tight">Available on your devices</h2>
+                            <p class="text-slate-400 mt-2">Get our official apps for the best Kenyan DJ movies, series and collections experience.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+                        <a href="assets/downloads/dj_movies_kenya.apk" download class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark border border-border-dark hover:border-primary/50 transition-colors cursor-pointer group">
+                            <div class="w-16 h-16 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-5xl">phone_android</span>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white text-lg font-bold">Android APK</p>
+                                <p class="text-slate-500 text-sm">Direct Download</p>
+                            </div>
+                        </a>
+                        <a href="assets/downloads/dj_movies_kenya_windows.exe" download class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark border border-border-dark hover:border-primary/50 transition-colors cursor-pointer group">
+                            <div class="w-16 h-16 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-5xl">desktop_windows</span>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white text-lg font-bold">Windows</p>
+                                <p class="text-slate-500 text-sm">Download Setup</p>
+                            </div>
+                        </a>
+                        <div class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark/40 border border-border-dark/60 opacity-60 grayscale hover:grayscale-0 transition-all cursor-not-allowed group relative overflow-hidden">
+                            <div class="absolute top-2 right-2 bg-secondary/20 text-secondary text-[10px] font-bold px-2 py-1 rounded-full border border-secondary/30">
                                 COMING SOON
-</div>
-<div class="w-16 h-16 flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-5xl">phone_iphone</span>
-</div>
-<div class="text-center">
-<p class="text-white/80 text-lg font-bold">iOS App</p>
-<p class="text-slate-600 text-sm">In Development</p>
-</div>
-</div>
-<div class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark/40 border border-border-dark/60 opacity-60 grayscale hover:grayscale-0 transition-all cursor-not-allowed group relative overflow-hidden">
-<div class="absolute top-2 right-2 bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-full border border-primary/30">
+                            </div>
+                            <div class="w-16 h-16 flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined text-5xl">phone_iphone</span>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white/80 text-lg font-bold">iOS App</p>
+                                <p class="text-slate-600 text-sm">In Development</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-8 rounded-2xl bg-card-dark/40 border border-border-dark/60 opacity-60 grayscale hover:grayscale-0 transition-all cursor-not-allowed group relative overflow-hidden">
+                            <div class="absolute top-2 right-2 bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-full border border-primary/30">
                                 COMING SOON
-</div>
-<div class="w-16 h-16 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-5xl">tv</span>
-</div>
-<div class="text-center">
-<p class="text-white/80 text-lg font-bold">TV App</p>
-<p class="text-slate-600 text-sm">In Development</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="px-4 md:px-20 lg:px-40 py-16 bg-card-dark/20" id="features">
-<div class="max-w-[1100px] mx-auto">
-<div class="flex flex-col gap-12 @container">
-<div class="flex flex-col gap-4 text-center">
-<h2 class="text-white tracking-tight text-[32px] md:text-5xl font-black leading-tight max-w-[720px] mx-auto">
-    Premium Entertainment <span class="text-primary">Features</span>
-</h2>
-<p class="text-slate-400 text-lg font-normal leading-normal max-w-[640px] mx-auto">
-    Designed specifically for Kenyan DJ movies, series and collections in our unique mobile landscape.
-</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="flex flex-col gap-4 rounded-2xl border border-border-dark bg-card-dark p-8 hover:bg-[#252525] transition-all group">
-<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-3xl">download_done</span>
-</div>
-<div class="flex flex-col gap-2">
-<h3 class="text-white text-xl font-bold">Offline Viewing</h3>
-<p class="text-slate-400 text-sm leading-relaxed">No internet? No problem. Download your favorite Kenyan DJ movies, series and collections while on Wi-Fi and watch them anywhere.</p>
-</div>
-</div>
-<div class="flex flex-col gap-4 rounded-2xl border border-border-dark bg-card-dark p-8 hover:bg-[#252525] transition-all group">
-<div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
-</div>
-<div class="flex flex-col gap-2">
-<h3 class="text-white text-xl font-bold">M-Pesa Integration</h3>
-<p class="text-slate-400 text-sm leading-relaxed">Seamlessly pay for premium access using STK Push. Fast, secure, and native to your lifestyle.</p>
-</div>
-</div>
-<div class="flex flex-col gap-4 rounded-2xl border border-border-dark bg-card-dark p-8 hover:bg-[#252525] transition-all group">
-<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-3xl">network_check</span>
-</div>
-<div class="flex flex-col gap-2">
-<h3 class="text-white text-xl font-bold">Data-Efficient</h3>
-<p class="text-slate-400 text-sm leading-relaxed">Advanced compression technology allows you to stream crystal clear video while using significantly less data than traditional platforms.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<footer class="bg-background-dark border-t border-border-dark pt-16 pb-8 px-4 md:px-20 lg:px-40">
-<div class="max-w-[1100px] mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-16">
-<div class="flex flex-col gap-6 max-w-md">
-<div class="flex items-center gap-3 text-white">
-<div class="size-8 flex items-center justify-center bg-gradient-to-tr from-primary to-secondary rounded-lg">
-<span class="material-symbols-outlined text-xl text-white">movie</span>
-</div>
-<h2 class="text-xl font-bold">DJ Movies <span class="text-primary">Kenya</span></h2>
-</div>
-<p class="text-slate-400 text-sm leading-relaxed">
-    The #1 destination for Kenyan DJ movies, series and collections. Built by Kenyans, for the world. Download our app to get started today.
-</p>
-</div>
-<div class="flex flex-col gap-6">
-<h4 class="text-white font-bold">Platforms</h4>
-<ul class="flex flex-col gap-4 text-slate-400 text-sm">
-<li><a class="hover:text-primary transition-colors" href="#">Android App</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Windows Desktop</a></li>
-<li><span class="text-slate-600">iOS App (Coming Soon)</span></li>
-<li><span class="text-slate-600">TV App (Coming Soon)</span></li>
-</ul>
-</div>
-</div>
-<div class="pt-8 border-t border-border-dark flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
-<p>© 2026 DJ Movies Kenya. All rights reserved.</p>
-<div class="flex items-center gap-6">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">shield_lock</span> Secure Payments</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">public</span> Available in Kenya</span>
-</div>
-</div>
-</div>
-</footer>
-</div>
+                            </div>
+                            <div class="w-16 h-16 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-5xl">tv</span>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white/80 text-lg font-bold">TV App</p>
+                                <p class="text-slate-600 text-sm">In Development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-4 md:px-20 lg:px-40 py-16 bg-card-dark/20" id="features">
+                <div class="max-w-[1100px] mx-auto">
+                    <div class="flex flex-col gap-12 @container">
+                        <div class="flex flex-col gap-4 text-center">
+                            <h2 class="text-white tracking-tight text-[32px] md:text-5xl font-black leading-tight max-w-[720px] mx-auto">
+                                Premium Entertainment <span class="text-primary">Features</span>
+                            </h2>
+                            <p class="text-slate-400 text-lg font-normal leading-normal max-w-[640px] mx-auto">
+                                Designed specifically for Kenyan DJ movies, series and collections in our unique mobile landscape.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="flex flex-col gap-4 rounded-2xl border border-border-dark bg-card-dark p-8 hover:bg-[#252525] transition-all group">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                    <span class="material-symbols-outlined text-3xl">download_done</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="text-white text-xl font-bold">Offline Viewing</h3>
+                                    <p class="text-slate-400 text-sm leading-relaxed">No internet? No problem. Download your favorite Kenyan DJ movies, series and collections while on Wi-Fi and watch them anywhere.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-2xl border border-border-dark bg-card-dark p-8 hover:bg-[#252525] transition-all group">
+                                <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all">
+                                    <span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="text-white text-xl font-bold">M-Pesa Integration</h3>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Seamlessly pay for premium access using STK Push. Fast, secure, and native to your lifestyle.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-2xl border border-border-dark bg-card-dark p-8 hover:bg-[#252525] transition-all group">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                    <span class="material-symbols-outlined text-3xl">network_check</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="text-white text-xl font-bold">Data-Efficient</h3>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Advanced compression technology allows you to stream crystal clear video while using significantly less data than traditional platforms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-background-dark border-t border-border-dark pt-16 pb-8 px-4 md:px-20 lg:px-40">
+            <div class="max-w-[1100px] mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-16">
+                    <div class="flex flex-col gap-6 max-w-md">
+                        <div class="flex items-center gap-3 text-white">
+                            <div class="size-8 flex items-center justify-center bg-gradient-to-br from-primary to-secondary rounded-[35%]">
+                                <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">play_circle</span>
+                            </div>
+                            <h2 class="text-xl font-bold">DJ Movies <span class="text-primary">Kenya</span></h2>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            The #1 destination for Kenyan DJ movies, series and collections. Built by Kenyans, for the world. Download our app to get started today.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-6">
+                        <h4 class="text-white font-bold">Platforms</h4>
+                        <ul class="flex flex-col gap-4 text-slate-400 text-sm">
+                            <li><a class="hover:text-primary transition-colors" href="#">Android App</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Windows Desktop</a></li>
+                            <li><span class="text-slate-600">iOS App (Coming Soon)</span></li>
+                            <li><span class="text-slate-600">TV App (Coming Soon)</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pt-8 border-t border-border-dark flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
+                    <p>© 2026 DJ Movies Kenya. All rights reserved.</p>
+                    <div class="flex items-center gap-6">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">shield_lock</span> Secure Payments</span>
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">public</span> Available in Kenya</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
 <script>
     const menuBtn = document.getElementById('menu-btn');
@@ -274,4 +266,5 @@
         link.addEventListener('click', closeMenu);
     });
 </script>
-</body></html>
+</body>
+</html>
