@@ -45,6 +45,20 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Download pulse animation */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(76, 175, 80, 0.6);
+            }
+        }
+
+        .downloading {
+            animation: pulse-glow 1.5s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-background-dark text-white transition-colors duration-300">
@@ -60,13 +74,16 @@
                 <div class="flex flex-col items-center gap-8 mt-10">
                     <a class="text-2xl font-bold text-white hover:text-primary" href="#features">Features</a>
                     <a class="text-2xl font-bold text-white hover:text-primary" href="#platforms">Platforms</a>
+                    <!-- <button class="w-full max-w-[280px] rounded-xl h-14 bg-primary text-white font-bold shadow-lg mt-4">
+                        Continue with Web Version
+                    </button> -->
                 </div>
             </div>
         </div>
         <header class="sticky top-0 z-50 w-full border-b border-solid border-border-dark bg-background-dark/80 backdrop-blur-md px-6 md:px-20 lg:px-40 py-3">
             <div class="flex items-center justify-between whitespace-nowrap max-w-[1200px] mx-auto">
                 <div class="flex items-center gap-3 text-white">
-                    <div class="size-8 flex items-center justify-center bg-gradient-to-br from-primary to-secondary rounded-[35%]">
+                    <div class="size-8 flex items-center justify-center bg-gradient-to-br from-primary to-secondary rounded-lg">
                         <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">play_circle</span>
                     </div>
                     <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">DJ Movies <span class="text-primary">Kenya</span></h2>
@@ -76,6 +93,11 @@
                         <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors" href="#features">Features</a>
                         <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors" href="#platforms">Platforms</a>
                     </div>
+                    <!-- <div class="flex items-center gap-4">
+                    <button class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold hover:brightness-110 transition-all border border-primary/20 shadow-lg shadow-primary/10">
+                    <span>Continue with Web Version</span>
+                    </button>
+                    </div> -->
                 </div>
                 <div class="md:hidden text-white">
                     <button id="menu-btn" class="md:hidden text-white p-2 flex items-center">
@@ -213,8 +235,8 @@
                 <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-16">
                     <div class="flex flex-col gap-6 max-w-md">
                         <div class="flex items-center gap-3 text-white">
-                            <div class="size-8 flex items-center justify-center bg-gradient-to-br from-primary to-secondary rounded-[35%]">
-                                <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">play_circle</span>
+                            <div class="size-8 flex items-center justify-center bg-gradient-to-tr from-primary to-secondary rounded-lg">
+                                <span class="material-symbols-outlined text-xl text-white">movie</span>
                             </div>
                             <h2 class="text-xl font-bold">DJ Movies <span class="text-primary">Kenya</span></h2>
                         </div>
@@ -243,6 +265,10 @@
         </footer>
     </div>
 </div>
+
+<!-- Toast Notification Container -->
+<div id="toast-container" class="fixed bottom-6 right-6 z-[200] flex flex-col gap-3 pointer-events-none"></div>
+
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-menu');
@@ -265,6 +291,80 @@
     menuLinks.forEach(link => {
         link.addEventListener('click', closeMenu);
     });
+
+    // Toast notification system
+    function showToast(message, type = 'success', icon = 'check_circle') {
+        const toastContainer = document.getElementById('toast-container');
+
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto transform translate-x-[400px] transition-all duration-500 ease-out`;
+
+        const bgColor = type === 'success' ? 'bg-primary' : type === 'info' ? 'bg-secondary' : 'bg-slate-700';
+
+        toast.innerHTML = `
+            <div class="${bgColor} text-white rounded-xl shadow-2xl px-6 py-4 flex items-center gap-4 min-w-[320px] border border-white/10">
+                <div class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-lg backdrop-blur-sm">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">${icon}</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-semibold text-sm leading-tight">${message}</p>
+                </div>
+                <button onclick="this.closest('[class*=translate]').style.transform = 'translateX(400px)'" class="text-white/80 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        // Trigger animation
+        setTimeout(() => {
+            toast.style.transform = 'translateX(0)';
+        }, 10);
+
+        // Auto remove after 4 seconds
+        setTimeout(() => {
+            toast.style.transform = 'translateX(400px)';
+            setTimeout(() => {
+                toast.remove();
+            }, 500);
+        }, 4000);
+    }
+
+    // Handle download clicks
+    function handleDownload(event, platform) {
+        const link = event.currentTarget;
+        const isComingSoon = link.classList.contains('cursor-not-allowed');
+
+        if (isComingSoon) {
+            event.preventDefault();
+            showToast(`${platform} is coming soon! We'll notify you when it's ready.`, 'info', 'schedule');
+        } else {
+            showToast(`Downloading ${platform}... Check your downloads folder.`, 'success', 'download');
+
+            // Add visual feedback to the card
+            const card = link;
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+
+    // Attach download handlers
+    document.addEventListener('DOMContentLoaded', () => {
+        const downloadCards = document.querySelectorAll('#platforms .flex.flex-col.items-center');
+
+        downloadCards.forEach((card, index) => {
+            const platforms = ['Android APK', 'Windows', 'iOS App', 'TV App'];
+
+            card.addEventListener('click', (e) => {
+                handleDownload(e, platforms[index]);
+            });
+
+            // Add transition for better UX
+            card.style.transition = 'all 0.2s ease';
+        });
+    });
 </script>
-</body>
-</html>
+</body></html>
