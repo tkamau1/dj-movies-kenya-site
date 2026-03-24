@@ -345,7 +345,7 @@
         const downloadCards = document.querySelectorAll('#platforms .flex.flex-col.items-center');
 
         downloadCards.forEach((card, index) => {
-            const platforms = ['Android APK', 'Windows', 'iOS App', 'Android TV'];
+            const platforms = ['Android APK', 'Windows', 'Android TV', 'iOS App'];
 
             card.addEventListener('click', (e) => {
                 handleDownload(e, platforms[index]);
