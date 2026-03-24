@@ -156,7 +156,7 @@
                                 <span class="material-symbols-outlined text-5xl">tv</span>
                             </div>
                             <div class="text-center">
-                                <p class="text-white text-lg font-bold">TV App</p>
+                                <p class="text-white text-lg font-bold">Android TV</p>
                                 <p class="text-slate-500 text-sm">Direct Download</p>
                             </div>
                         </a>
@@ -238,8 +238,8 @@
                         <ul class="flex flex-col gap-4 text-slate-400 text-sm">
                             <li><a class="hover:text-primary transition-colors" href="#">Android App</a></li>
                             <li><a class="hover:text-primary transition-colors" href="#">Windows Desktop</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="assets/downloads/dj_movies_kenya_tv.apk" download>Android TV</a></li>
                             <li><span class="text-slate-600">iOS App (Coming Soon)</span></li>
-                            <li><a class="hover:text-primary transition-colors" href="assets/downloads/dj_movies_kenya_tv.apk" download>TV App</a></li>
                         </ul>
                     </div>
                 </div>
@@ -345,7 +345,7 @@
         const downloadCards = document.querySelectorAll('#platforms .flex.flex-col.items-center');
 
         downloadCards.forEach((card, index) => {
-            const platforms = ['Android APK', 'Windows', 'iOS App', 'TV App'];
+            const platforms = ['Android APK', 'Windows', 'iOS App', 'Android TV'];
 
             card.addEventListener('click', (e) => {
                 handleDownload(e, platforms[index]);
