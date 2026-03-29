@@ -388,12 +388,12 @@
     // ============================================================
     // TIKTOK IN-APP BROWSER DETECTION
     // ============================================================
-    // (function() {
-    //     var ua = navigator.userAgent || '';
-    //     var isTikTok = /musical_ly|tiktok|bytedance/i.test(ua);
-    //
-    //     if (!isTikTok) return;
-    //
+    (function() {
+        var ua = navigator.userAgent || '';
+        var isTikTok = /musical_ly|tiktok|bytedance/i.test(ua);
+
+        if (!isTikTok) return;
+
     //     // Show the top banner
     //     var banner = document.getElementById('tiktok-iab-banner');
     //     if (banner) {
@@ -418,137 +418,137 @@
     //             }
     //         });
     //     }
+
+        // ── BLOCK ALL DOWNLOADS and show modal instead ──
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[download]');
+            if (!link) return;
+            // Don't block coming-soon items (no href worth downloading)
+            if (link.classList.contains('cursor-not-allowed')) return;
+
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            showTikTokModal();
+        }, true); // capture phase so it fires before other handlers
     //
-    //     // ── BLOCK ALL DOWNLOADS and show modal instead ──
-    //     document.addEventListener('click', function(e) {
-    //         var link = e.target.closest('a[download]');
-    //         if (!link) return;
-    //         // Don't block coming-soon items (no href worth downloading)
-    //         if (link.classList.contains('cursor-not-allowed')) return;
-    //
-    //         e.preventDefault();
-    //         e.stopImmediatePropagation();
-    //         showTikTokModal();
-    //     }, true); // capture phase so it fires before other handlers
-    //
-    //     function showTikTokModal() {
-    //         // Remove existing modal if any
-    //         var existing = document.getElementById('tiktok-modal-overlay');
-    //         if (existing) existing.remove();
-    //
-    //         var overlay = document.createElement('div');
-    //         overlay.id = 'tiktok-modal-overlay';
-    //         overlay.style.cssText = [
-    //             'position:fixed','top:0','left:0','right:0','bottom:0',
-    //             'z-index:99999','background:rgba(0,0,0,0.85)',
-    //             'backdrop-filter:blur(6px)','-webkit-backdrop-filter:blur(6px)',
-    //             'display:flex','align-items:center','justify-content:center',
-    //             'padding:24px','box-sizing:border-box',
-    //             'animation:fadeInOverlay 0.25s ease'
-    //         ].join(';');
-    //
-    //         overlay.innerHTML = `
-    //             <style>
-    //                 @keyframes fadeInOverlay { from{opacity:0} to{opacity:1} }
-    //                 @keyframes slideUpModal { from{transform:translateY(40px);opacity:0} to{transform:translateY(0);opacity:1} }
-    //                 #tiktok-modal-box { animation: slideUpModal 0.3s ease; }
-    //                 .tiktok-step-row {
-    //                     display:flex; align-items:stretch; gap:0;
-    //                     background:#1a1a1a; border-radius:16px;
-    //                     border:1px solid rgba(76,175,80,0.2); overflow:hidden;
-    //                     margin-bottom:12px;
-    //                 }
-    //                 .tiktok-step-num-col {
-    //                     background:#4CAF50; color:white;
-    //                     font-weight:900; font-size:22px;
-    //                     width:48px; min-width:48px;
-    //                     display:flex; align-items:center; justify-content:center;
-    //                 }
-    //                 .tiktok-step-num-col.orange { background:#FF6F00; }
-    //                 .tiktok-step-body {
-    //                     padding:16px 18px; flex:1;
-    //                 }
-    //                 .tiktok-step-label {
-    //                     font-size:10px; text-transform:uppercase;
-    //                     letter-spacing:1px; color:rgba(255,255,255,0.4);
-    //                     margin:0 0 4px 0;
-    //                 }
-    //                 .tiktok-step-action {
-    //                     font-size:16px; font-weight:700; color:#fff; margin:0;
-    //                 }
-    //                 .tiktok-step-hint {
-    //                     font-size:12px; color:rgba(255,255,255,0.45); margin:4px 0 0 0;
-    //                 }
-    //             </style>
-    //             <div id="tiktok-modal-box" style="
-    //                 background:#141414; border-radius:24px;
-    //                 border:1px solid rgba(76,175,80,0.3);
-    //                 box-shadow:0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(76,175,80,0.1);
-    //                 max-width:400px; width:100%; padding:28px 24px;
-    //                 font-family:'Spline Sans',sans-serif;
-    //             ">
-    //                 <!-- Header -->
-    //                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
-    //                     <div style="width:48px;height:48px;background:rgba(255,255,255,0.06);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-    //                         <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.36 6.36 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.03-.08z"/></svg>
-    //                     </div>
-    //                     <div>
-    //                         <p style="margin:0;font-size:17px;font-weight:800;color:#fff;line-height:1.2;">Can't download here</p>
-    //                         <p style="margin:4px 0 0;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.3;">TikTok's browser blocks file downloads.<br>Follow these steps:</p>
-    //                     </div>
-    //                 </div>
-    //
-    //                 <!-- Steps -->
-    //                 <div class="tiktok-step-row">
-    //                     <div class="tiktok-step-num-col">1</div>
-    //                     <div class="tiktok-step-body">
-    //                         <p class="tiktok-step-label">Tap</p>
-    //                         <p class="tiktok-step-action">⋯ &nbsp;(3 dots)</p>
-    //                         <p class="tiktok-step-hint">Top-right corner of the screen</p>
-    //                     </div>
-    //                 </div>
-    //
-    //                 <div class="tiktok-step-row">
-    //                     <div class="tiktok-step-num-col">2</div>
-    //                     <div class="tiktok-step-body">
-    //                         <p class="tiktok-step-label">Select</p>
-    //                         <p class="tiktok-step-action">Open in browser</p>
-    //                         <p class="tiktok-step-hint">This opens Chrome or your default browser</p>
-    //                     </div>
-    //                 </div>
-    //
-    //                 <div class="tiktok-step-row" style="border-color:rgba(76,175,80,0.4);background:#0d1f0e;">
-    //                     <div class="tiktok-step-num-col orange">3</div>
-    //                     <div class="tiktok-step-body">
-    //                         <p class="tiktok-step-label">Then</p>
-    //                         <p class="tiktok-step-action" style="color:#4CAF50;">Tap Download again ✓</p>
-    //                         <p class="tiktok-step-hint" style="color:rgba(76,175,80,0.5);">It will work in Chrome!</p>
-    //                     </div>
-    //                 </div>
-    //
-    //                 <!-- Close button -->
-    //                 <button id="tiktok-modal-close" style="
-    //                     margin-top:8px; width:100%; padding:14px;
-    //                     background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-    //                     border-radius:14px; color:rgba(255,255,255,0.6);
-    //                     font-size:14px; font-weight:600; cursor:pointer;
-    //                     font-family:'Spline Sans',sans-serif;
-    //                     transition:background 0.2s;
-    //                 ">Got it — close</button>
-    //             </div>
-    //         `;
-    //
-    //         document.body.appendChild(overlay);
-    //
-    //         // Close on button or backdrop click
-    //         document.getElementById('tiktok-modal-close').addEventListener('click', function() {
-    //             overlay.remove();
-    //         });
-    //         overlay.addEventListener('click', function(e) {
-    //             if (e.target === overlay) overlay.remove();
-    //         });
-    //     }
-    // })();
+        function showTikTokModal() {
+            // Remove existing modal if any
+            var existing = document.getElementById('tiktok-modal-overlay');
+            if (existing) existing.remove();
+
+            var overlay = document.createElement('div');
+            overlay.id = 'tiktok-modal-overlay';
+            overlay.style.cssText = [
+                'position:fixed','top:0','left:0','right:0','bottom:0',
+                'z-index:99999','background:rgba(0,0,0,0.85)',
+                'backdrop-filter:blur(6px)','-webkit-backdrop-filter:blur(6px)',
+                'display:flex','align-items:center','justify-content:center',
+                'padding:24px','box-sizing:border-box',
+                'animation:fadeInOverlay 0.25s ease'
+            ].join(';');
+
+            overlay.innerHTML = `
+                <style>
+                    @keyframes fadeInOverlay { from{opacity:0} to{opacity:1} }
+                    @keyframes slideUpModal { from{transform:translateY(40px);opacity:0} to{transform:translateY(0);opacity:1} }
+                    #tiktok-modal-box { animation: slideUpModal 0.3s ease; }
+                    .tiktok-step-row {
+                        display:flex; align-items:stretch; gap:0;
+                        background:#1a1a1a; border-radius:16px;
+                        border:1px solid rgba(76,175,80,0.2); overflow:hidden;
+                        margin-bottom:12px;
+                    }
+                    .tiktok-step-num-col {
+                        background:#4CAF50; color:white;
+                        font-weight:900; font-size:22px;
+                        width:48px; min-width:48px;
+                        display:flex; align-items:center; justify-content:center;
+                    }
+                    .tiktok-step-num-col.orange { background:#FF6F00; }
+                    .tiktok-step-body {
+                        padding:16px 18px; flex:1;
+                    }
+                    .tiktok-step-label {
+                        font-size:10px; text-transform:uppercase;
+                        letter-spacing:1px; color:rgba(255,255,255,0.4);
+                        margin:0 0 4px 0;
+                    }
+                    .tiktok-step-action {
+                        font-size:16px; font-weight:700; color:#fff; margin:0;
+                    }
+                    .tiktok-step-hint {
+                        font-size:12px; color:rgba(255,255,255,0.45); margin:4px 0 0 0;
+                    }
+                </style>
+                <div id="tiktok-modal-box" style="
+                    background:#141414; border-radius:24px;
+                    border:1px solid rgba(76,175,80,0.3);
+                    box-shadow:0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(76,175,80,0.1);
+                    max-width:400px; width:100%; padding:28px 24px;
+                    font-family:'Spline Sans',sans-serif;
+                ">
+                    <!-- Header -->
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+                        <div style="width:48px;height:48px;background:rgba(255,255,255,0.06);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.36 6.36 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.03-.08z"/></svg>
+                        </div>
+                        <div>
+                            <p style="margin:0;font-size:17px;font-weight:800;color:#fff;line-height:1.2;">Can't download here</p>
+                            <p style="margin:4px 0 0;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.3;">TikTok's browser blocks file downloads.<br>Follow these steps:</p>
+                        </div>
+                    </div>
+
+                    <!-- Steps -->
+                    <div class="tiktok-step-row">
+                        <div class="tiktok-step-num-col">1</div>
+                        <div class="tiktok-step-body">
+                            <p class="tiktok-step-label">Tap</p>
+                            <p class="tiktok-step-action">⋯ &nbsp;(3 dots)</p>
+                            <p class="tiktok-step-hint">Top-right corner of the screen</p>
+                        </div>
+                    </div>
+
+                    <div class="tiktok-step-row">
+                        <div class="tiktok-step-num-col">2</div>
+                        <div class="tiktok-step-body">
+                            <p class="tiktok-step-label">Select</p>
+                            <p class="tiktok-step-action">Open in browser</p>
+                            <p class="tiktok-step-hint">This opens Chrome or your default browser</p>
+                        </div>
+                    </div>
+
+                    <div class="tiktok-step-row" style="border-color:rgba(76,175,80,0.4);background:#0d1f0e;">
+                        <div class="tiktok-step-num-col orange">3</div>
+                        <div class="tiktok-step-body">
+                            <p class="tiktok-step-label">Then</p>
+                            <p class="tiktok-step-action" style="color:#4CAF50;">Tap Download again ✓</p>
+                            <p class="tiktok-step-hint" style="color:rgba(76,175,80,0.5);">It will work in Chrome!</p>
+                        </div>
+                    </div>
+
+                    <!-- Close button -->
+                    <button id="tiktok-modal-close" style="
+                        margin-top:8px; width:100%; padding:14px;
+                        background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+                        border-radius:14px; color:rgba(255,255,255,0.6);
+                        font-size:14px; font-weight:600; cursor:pointer;
+                        font-family:'Spline Sans',sans-serif;
+                        transition:background 0.2s;
+                    ">Got it — close</button>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+
+            // Close on button or backdrop click
+            document.getElementById('tiktok-modal-close').addEventListener('click', function() {
+                overlay.remove();
+            });
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) overlay.remove();
+            });
+        }
+    })();
     // ============================================================
     // END TIKTOK DETECTION
     // ============================================================
