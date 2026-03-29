@@ -59,9 +59,135 @@
         .downloading {
             animation: pulse-glow 1.5s ease-in-out infinite;
         }
+
+        /* TikTok IAB Banner */
+        #tiktok-iab-banner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d1f0e 100%);
+            border-bottom: 2px solid #4CAF50;
+            box-shadow: 0 4px 30px rgba(76, 175, 80, 0.25);
+            animation: slideDown 0.4s ease-out;
+        }
+
+        #tiktok-iab-banner.visible {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .iab-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(76, 175, 80, 0.08);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 10px;
+            padding: 10px 14px;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .iab-step-num {
+            width: 24px;
+            height: 24px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .iab-arrow {
+            color: #4CAF50;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        @keyframes bounce-arrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .bounce {
+            animation: bounce-arrow 1.2s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-background-dark text-white transition-colors duration-300">
+
+<!-- ===================== TIKTOK IN-APP BROWSER BANNER ===================== -->
+<div id="tiktok-iab-banner" role="alert" aria-live="polite">
+    <div style="max-width:1100px; margin:0 auto; padding: 14px 20px;">
+        <!-- Top row: icon + message + close -->
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <!-- TikTok icon (SVG) -->
+            <div style="flex-shrink:0; width:36px; height:36px; background:rgba(255,255,255,0.05); border-radius:8px; display:flex; align-items:center; justify-content:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.36 6.36 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.03-.08z"/>
+                </svg>
+            </div>
+
+            <div style="flex:1;">
+                <p style="margin:0; font-weight:700; font-size:14px; color:#ffffff; line-height:1.3;">
+                    You're inside TikTok's browser
+                </p>
+                <p style="margin:0; font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px;">
+                    Downloads are blocked here. Open in Chrome to download the app.
+                </p>
+            </div>
+
+            <button id="tiktok-banner-close" aria-label="Dismiss banner"
+                    style="flex-shrink:0; background:rgba(255,255,255,0.07); border:none; border-radius:8px; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:rgba(255,255,255,0.6);">
+                <span class="material-symbols-outlined" style="font-size:18px;">close</span>
+            </button>
+        </div>
+
+        <!-- Step-by-step instructions -->
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <div class="iab-step">
+                <div class="iab-step-num">1</div>
+                <div>
+                    <p style="margin:0; font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.5px;">Tap</p>
+                    <p style="margin:0; font-size:13px; font-weight:600; color:#fff;">⋯ (3 dots)</p>
+                </div>
+            </div>
+
+            <span class="iab-arrow bounce">›</span>
+
+            <div class="iab-step">
+                <div class="iab-step-num">2</div>
+                <div>
+                    <p style="margin:0; font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.5px;">Select</p>
+                    <p style="margin:0; font-size:13px; font-weight:600; color:#fff;">Open in browser</p>
+                </div>
+            </div>
+
+            <span class="iab-arrow bounce" style="animation-delay:0.2s">›</span>
+
+            <div class="iab-step" style="background:rgba(76,175,80,0.15); border-color:rgba(76,175,80,0.4);">
+                <div class="iab-step-num" style="background:#FF6F00;">3</div>
+                <div>
+                    <p style="margin:0; font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.5px;">Then</p>
+                    <p style="margin:0; font-size:13px; font-weight:700; color:#4CAF50;">Download App ✓</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ===================== END TIKTOK BANNER ===================== -->
+
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
     <div class="layout-container flex h-full grow flex-col">
         <div id="mobile-menu" class="fixed inset-0 z-[100] bg-background-dark/95 backdrop-blur-lg translate-x-full transition-transform duration-300 md:hidden">
@@ -259,6 +385,86 @@
 <div id="toast-container" class="fixed bottom-6 right-6 z-[200] flex flex-col gap-3 pointer-events-none"></div>
 
 <script>
+    // ============================================================
+    // TIKTOK IN-APP BROWSER DETECTION
+    // ============================================================
+    (function() {
+        var ua = navigator.userAgent || '';
+        var isTikTok = /musical_ly|tiktok|bytedance/i.test(ua);
+        var isAndroid = /android/i.test(ua);
+
+        if (!isTikTok) return; // Not in TikTok IAB — do nothing
+
+        // Show the banner
+        var banner = document.getElementById('tiktok-iab-banner');
+        if (banner) {
+            banner.classList.add('visible');
+
+            // Push page content down so banner doesn't cover the header
+            // (banner is fixed so we add top padding to the body wrapper)
+            var wrapper = document.querySelector('.layout-container');
+            if (wrapper) {
+                // We'll measure the banner height after a tick
+                setTimeout(function() {
+                    var h = banner.offsetHeight;
+                    document.body.style.paddingTop = h + 'px';
+                }, 50);
+            }
+        }
+
+        // Close button
+        var closeBtn = document.getElementById('tiktok-banner-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                if (banner) {
+                    banner.style.transform = 'translateY(-100%)';
+                    banner.style.opacity = '0';
+                    banner.style.transition = 'all 0.3s ease';
+                    setTimeout(function() {
+                        banner.classList.remove('visible');
+                        document.body.style.paddingTop = '0';
+                    }, 300);
+                }
+            });
+        }
+
+        // On Android: intercept download clicks and try Chrome intent
+        if (isAndroid) {
+            document.addEventListener('click', function(e) {
+                var link = e.target.closest('a[download]');
+                if (!link) return;
+
+                e.preventDefault();
+                var href = link.getAttribute('href');
+                if (!href) return;
+
+                // Build absolute URL
+                var absUrl = new URL(href, window.location.href).href;
+
+                // Try Chrome intent first
+                var intentUrl = 'intent://' + absUrl.replace(/^https?:\/\//, '') +
+                    '#Intent;scheme=https;package=com.android.chrome;end';
+
+                // Fallback: open the file URL directly after 1.5s
+                // (in case the intent fails on some devices)
+                var fallbackTimer = setTimeout(function() {
+                    window.location.href = absUrl;
+                }, 1500);
+
+                // Navigate to intent
+                window.location.href = intentUrl;
+
+                // If intent navigated successfully, clear the fallback
+                window.addEventListener('blur', function() {
+                    clearTimeout(fallbackTimer);
+                }, { once: true });
+            });
+        }
+    })();
+    // ============================================================
+    // END TIKTOK DETECTION
+    // ============================================================
+
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-menu');
     const mobileMenu = document.getElementById('mobile-menu');
